@@ -49,7 +49,7 @@ jobs:
           name: node-app
           
       - name: uncompress files using powershell
-        run: powershell Expand-Archive -Path D:\a\mmhe_eggp_test\mmhe_eggp_test\build.zip -DestinationPath /home/runner/work/mmhe_eggp_test/mmhe_eggp_test
+        run: unzip /home/runner/work/mmhe_eggp_test/mmhe_eggp_test/build.zip
         
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v2
