@@ -26,12 +26,14 @@ jobs:
           npm install
           npm run build --if-present
           npm run test --if-present
-      
+      - name: compress files using powershell
+        run: powershell Compress-Archive . build.zip
+        
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2.2.4
         with:
           name: node-app
-          path: .
+          path: build.zip
 
   deploy:
     runs-on: ubuntu-latest
@@ -45,7 +47,10 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: node-app
-
+          
+      - name: uncompress files using powershell
+        run: powershell Expand-Archive build.zip
+        
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v2
         id: deploy-to-webapp
