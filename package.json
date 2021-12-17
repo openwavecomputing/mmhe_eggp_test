@@ -55,7 +55,7 @@
   "scripts": {
     "start": "serve -s build",
     "prestart": "npm install -g serve",
-    "build": "export CI=false && react-scripts build"
+    "build": "react-scripts build"
   },
   "eslintConfig": {
     "extends": [
